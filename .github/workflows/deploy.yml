@@ -35,7 +35,12 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Application
-        run: npm run build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+        run: |
+          npm run build
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
