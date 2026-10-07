@@ -1,0 +1,8 @@
+{
+  "name": "Your Antique Jewellery - Heritage & Fine Craftsmanship",
+  "description": "Discover timeless handcrafted antique jewellery inspired by royal heritage, temple craftsmanship, and enduring elegance. Pure 22K gold, kundan, polki and temple collections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
