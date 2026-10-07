@@ -384,13 +384,19 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Admin Auth
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState<boolean>(() => {
-    return localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+    try {
+      return localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+    } catch {
+      return false;
+    }
   });
 
   const adminLogin = (pass: string): boolean => {
     if (pass.trim() === 'antique123' || pass.trim() === 'admin' || pass.trim() === 'admin123') {
       setIsAdminLoggedIn(true);
-      localStorage.setItem(ADMIN_AUTH_KEY, 'true');
+      try {
+        localStorage.setItem(ADMIN_AUTH_KEY, 'true');
+      } catch {}
       return true;
     }
     return false;
@@ -398,7 +404,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const adminLogout = () => {
     setIsAdminLoggedIn(false);
-    localStorage.removeItem(ADMIN_AUTH_KEY);
+    try {
+      localStorage.removeItem(ADMIN_AUTH_KEY);
+    } catch {}
     setCurrentPage('home');
   };
 
